@@ -1,0 +1,44 @@
+# 系统临时文件
+Thumbs.db          # Windows 系统
+*.swp              # Vim 编辑器临时文件
+.idea/             # IntelliJ/VS Code 编辑器配置目录（如果需要同步配置，可去掉）
+.vscode/           # VS Code 配置目录（同理）
+*.sublime-*        # Sublime 编辑器配置
+
+# 日志/缓存文件
+*.log
+*.log.*
+cache/
+temp/
+tmp/
+
+# 敏感信息文件（绝对不能提交！）
+*.env              # 环境变量文件（含密钥、密码）
+*.pem              # 密钥文件
+config.json        # 本地配置文件（如果包含敏感信息）
+
+# Obsidian 本地配置（不同设备布局不同，无需同步）
+.obsidian/workspace.json
+.obsidian/appearance.json
+.obsidian/community-plugins.json
+.obsidian/plugins/       # 插件目录（如果插件已在其他设备安装，可忽略；若需同步插件，去掉这行）
+.obsidian/themes/        # 主题目录（同理）
+
+# 附件临时文件（如果用了 Excalidraw 等插件）
+*.excalidraw~
+*.png.tmp
+
+# 系统/编辑器临时文件（复用通用模板的这部分）
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+2025Autumn-Data-Structure-and-Algorithm-A/
+ics/
+常微分方程/
+集合论与图论/
+离散数学/
+理论力学/
+音乐与数学/
+
