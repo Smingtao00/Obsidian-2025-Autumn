@@ -395,3 +395,94 @@ $$\int_{s_0}^{+\infty} \frac{ds}{G(s)} = +\infty,s_0 > 0$$
 
 
 ![image-20251128130736872](C:\Users\浪涛依旧铭记\AppData\Roaming\Typora\typora-user-images\image-20251128130736872.png)
+
+
+## 解对初值和参数的可微性
+
+### Bellman-Gronwall 不等式
+
+设 $x(t)$ 和 $f(t)$ 是区间 $[t_1, t_2]$ 上非负连续的纯量函数。若存在非负常数 $k$ 和 $\tau \in (t_1， t_2)$，使得 
+$$x(t) \leq k + | \int_\tau^tf(s)x(s)ds|, \space t \in(t_1,t_2)$$，则 $$x(t) \leq k e^{|\int_\tau^tf(s)ds|}, \space t \in (t_1, t_2)$$
+
+
+### 定理 7.1 解对初值的可微性
+
+若 $f(t, x)$ 及其对 $x$ 的各分量的偏微商于 $(t,x)$ 空间域 $G$ 内连续，则方程组 $(E)$ 的解 $x = \varphi(t, \tau, \xi)$ 在集合 $$S = \{(t, \tau, \xi) | t \in (a(\tau, \xi), b(\tau, \xi)), (\tau, \xi) \in G\}$$ 内连续可微，且 $y = \frac{\partial\varphi}{\partial\xi_i}(t, \tau, \xi)(i = 1, 2, \dots, n), y = \frac{\partial\varphi}{\partial\tau}(t, \tau, \xi)$ 分别是初值问题
+$$
+\begin{align}
+&y^{'} = f_x(t, \varphi(t, \tau, \xi))y,\space y(\tau) = e_i,\space i = 1, 2, \dots, n \space \space(7.3) \\
+&y^{'} = f_x(t, \varphi(t, \tau, \xi))y,\space y(\tau) = -f(\tau, \xi) \space (7.4)
+\end{align}
+$$ 的解，其中 $f_x(t,x)$ 是 $f(t,x)$ 关于 $x$ 的雅可比（Jacobi）矩阵，$\xi_i$ 是 $\xi$ 的第 $i$ 个分量，$e_i$ 是第 $i$ 个 $n$ 维基本列向量。
+
+
+#### 注 7.1
+当 $n = 1$ 时，
+$$
+\begin{align}
+\frac{\partial\varphi}{\partial \xi}(t, \tau, \xi) = exp \{ \int_\tau^t f_x(s, \varphi(s,\tau,\xi))ds \} \\
+\frac{\partial\varphi}{\partial \tau} = - f(\tau, \xi)exp \{\int_\tau^t f_x(s, \varphi(s, \tau, \xi))ds\}
+\end{align}
+$$
+
+#### 注 7.2
+反复利用上述各式，可以进一步得到关于解对初值的高阶可微性定理。例如，若 $f(t,x)$ 对 $x$ 的直到 $r(r \geq 1)$ 阶微商都在域 $G$ 内连续，则 $\varphi(t, \tau, \xi)$ 对 $\xi$ 的直到 $r$ 阶微商都连续。
+
+
+
+### 定理 7.2 解对参量的连续性
+
+若 $f(t, x, \lambda)$ 及其对 $x$ 于 $\lambda$ 的各个分量的偏微商于域 $G \times D$ 内连续，则对任意 $(\tau, \xi, \lambda) \in G \times D$，方程组 $(E)_\lambda$ 的解 $x = \varphi(t, \tau, \xi, \lambda)$ 在 $$ S = \{(t, \tau, \xi, \lambda) | t \in (a(\tau, \xi, \lambda),b(\tau,\xi, \lambda)), (\tau, \xi, \lambda) \in G \times D\}$$ 内连续可微，且 $y = \frac{\partial\varphi}{\partial\xi_i}(t, \tau, \xi, \lambda)(i = 1, 2, \dots, n), \space y = \frac{\partial\varphi}{\partial \tau}(t, \tau, \xi, \lambda), \space y = \frac{\partial\varphi}{\partial \lambda_j}(t, \tau, \xi, \lambda)(j = 1, 2, \dots, m)$ 分别是初值问题 
+$$
+\begin{align}
+&y^{'} = f_x(t, \varphi(t, \tau, \xi, \lambda), \lambda)y, \space y(\tau) = e_i, \space i = 1, 2, \dots, n  \\
+&y^{'} = f_x(t, \varphi(t, \tau, \xi, \lambda), \lambda)y, \space y(\tau) = -f(\tau, \xi, \lambda) \\
+&y^{'} = f_x(t, \varphi(t, \tau, \xi, \lambda), \lambda)y + f_{\lambda_j}(t, \varphi(t, \tau, \xi, \lambda), \lambda), \space y(\tau) = 0, \space j = 1, 2, \dots, m
+\end{align}
+$$
+的解，其中 $\lambda_j$ 是 $\lambda$ 的第 $j$ 个分量。
+
+
+
+---
+
+# 定性理论初步
+
+## 解的稳定性
+
+### 定义 1.1 李雅普诺夫稳定
+
+设方程组 $(E)$ 的解 $x = \varphi(t, \tau, \xi_0)$ 在区间 $[\tau, +\infty)$ 有定义。若对任给的 $\epsilon > 0$，都存在 $\delta > 0$，使得当 $|\xi - \xi_0| < \delta$ 时，解 $x = \varphi(t, \tau, \xi)$ 在区间 $[\tau, +\infty)$ 有定义，且 $$|\varphi(t, \tau, \xi) - \varphi(t, \tau, \xi_0)| < \epsilon, \space t \in [\tau, +\infty)$$，则称 $x = \varphi(t, \tau, \xi)$ （在李雅普诺夫意义下）是 **稳定** 的。否则，称 $x = \varphi(t, \tau, \xi_0)$ 是 **不稳定** 的。
+
+
+### 定义 1.2 渐近稳定和全局渐近稳定
+
+若 $x = \varphi(t, \tau, \xi_0)$ 是稳定的，且存在 $\delta_0 > 0$，使得只要 $|\xi - \xi_0| < \delta_0$，就有 $$\lim\limits_{t \rightarrow +\infty}(\varphi(t, \tau, \xi) - \varphi(t, \tau, \xi_0)) = 0$$，则称 $x = \varphi(t, \tau, \xi_0)$ （在李雅普诺夫意义下）是 **渐近稳定** 的。若 $G = \mathbb{R}^n$，且渐近稳定定义中 $\delta_0$ 可取 $+\infty$，则称解 $x = \varphi(t, \tau, \xi_0)$ 是 **全局渐近稳定** 的。
+
+
+
+讨论 $\frac{dx}{dt} = A(t)x, \space (1.3)$ 零解的稳定性
+
+### 定理 1.1
+
+设 $\Phi(t)$ 是方程组 $(1.3)$ 的基本解矩阵，则方程组的零解
+1. 是稳定的，当且仅当 $\Phi(t)$ 在区间 $[0, +\infty)$ 上有界。
+2. 是渐近稳定的，当且仅当 $\lim\limits_{t \rightarrow +\infty}\Phi(t) = 0$
+
+
+### 定理 1.2
+
+当 $A(t)$ 是常矩阵 $A$ 时，方程组 $(1.3)$ 的零解
+1. 是渐近稳定的（也是全局渐近稳定），当且仅当 $A$ 的全部特征值都有负实部。
+2. 是稳定的，当且仅当 $A$ 的全部特征值的实部是非正的，并且实部为零的特征值对应的若尔当小块都是一阶的。
+3. 是不稳定的，当且仅当 $A$ 的特征值中至少有一个实部为正，或者至少有一个实部为零，而它所对应的若尔当小块是高于一阶的。
+
+
+方程 $\frac{dx}{dt} = A(t)x + R(t, x), \space (1.2)$，$A(t)$ 在区间 $[\tau, +\infty)$ 上连续，$R(t,x)$ 于 $\Omega = \{(t, x) | t \in [\tau, +\infty), |x| < H\}$ 上连续，局部地满足利氏条件，$R(t, 0) = 0$，且对 $t \in [\tau, +\infty)$ 一致地有 $$\lim\limits_{|x| \rightarrow 0} \frac{R(t,x)}{|x|} = 0$$
+
+### 定理 1.3
+设 $A(t)$ 是常矩阵 $A$，
+1. 若 $A$ 的全部特征值都有负实部，则方程组 $(1.2)$ 的零解是渐近稳定的。
+2. 若 $A$ 的特征值中至少有一个具有正实部，则方程组 $(1.2)$ 的零解是不稳定的。
+
+
